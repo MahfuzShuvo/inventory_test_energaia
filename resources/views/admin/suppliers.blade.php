@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="content-header">
-                    <h5>All Products</h5>
+                    <h5>All Suppliers</h5>
                 </div>
 
                 <div class="card-body">
@@ -84,61 +84,20 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Image</th>
-                                <th>Description</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Actions</th>
+                                <th>Email</th>
+                                <th>Created</th>
                             </tr>
                         </thead>
                         @php
                             $num = 1;
                         @endphp
                         <tbody>
-                            @foreach ($products as $product)
+                            @foreach ($suppliers as $supplier)
                                 <tr>
                                     <td>{{ $num }}</td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>
-                                        <div class="product-image">
-                                            <img src="{{ asset($product->image) }}">
-                                        </div>
-                                    </td>
-                                    <td>{{ $product->description }}</td>
-                                    <td>{{ $product->price }} &#2547;</td>
-                                    <td>{{ $product->quantity }}</td>
-                                    <td>
-                                        <div class="action-icons">
-                                            <a href="{{ route('product.edit', $product->id) }}"><i class='bx bxs-edit' ></i></a>
-                                            <a href="#deleteModal{{ $product->id }}" data-toggle="modal"><i class='bx bx-trash' ></i></a>
-
-                                            <!-- Delete Modal start -->
-                                            <div class="modal fade" tabindex="-1" id="deleteModal{{ $product->id }}">
-                                                <div class="modal-dialog modal-dialog-top" role="document">
-                                                    <div class="modal-content">
-                                                        <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <em class="icon ni ni-cross"></em>
-                                                        </a>
-                                                        <div class="modal-header">
-                                                            <h6 class="modal-title">Are you sure to delete?</h6>
-                                                        </div>
-                                                        {{-- <div class="modal-body">
-                                                            
-                                                        </div> --}}
-                                                        <div class="modal-footer">
-                                                            <form action="{{ route('product.destroy', $product->id) }}" method="post">
-                                                                @method('delete')
-                                                                @csrf
-                                                                <button type="submit" class="btn btn-info btn-sm" style="font-size: 12px;">YES, delete permanently</button>
-                                                            </form>
-                                                            <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal" style="font-weight: 400; font-size: 12px;">NO</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Delete Modal end -->
-                                        </div>
-                                    </td>
+                                    <td>{{ $supplier->name }}</td>
+                                    <td>{{ $supplier->email }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($supplier->created_at)->format('d/m/Y')}}</td>>
                                 </tr>
                                 
                                 @php

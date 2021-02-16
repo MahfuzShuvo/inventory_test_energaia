@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('logout', 'Auth\LoginController@logout')->name('user.logout');
 
+Route::get('/users', 'AdminController@users')->name('users');
+Route::get('/suppliers', 'AdminController@suppliers')->name('suppliers');
+
 Route::resource('/products', 'ProductController', ['names' => 'product']);
 
 // admin
