@@ -71,6 +71,7 @@
                                 <th>Description</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -90,6 +91,14 @@
                                     <td>{{ $product->description }}</td>
                                     <td>{{ $product->price }} &#2547;</td>
                                     <td>{{ $product->quantity }}</td>
+                                    <td>
+                                        @if ($product->status == 1)
+                                            <span class="badge bg-success" style="color: #fff; padding: 4px 8px; font-size: 10px;">Approved</span>
+                                        @endif
+                                        @if ($product->status == 0)
+                                            <span class="badge bg-danger" style="color: #fff; padding: 4px 8px; font-size: 10px;">Pending</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="action-icons">
                                             <a href="{{ route('product.edit', $product->id) }}"><i class='bx bxs-edit' ></i></a>

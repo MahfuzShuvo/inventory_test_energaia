@@ -31,4 +31,18 @@ class AdminController extends Controller
     	$suppliers = Supplier::all();
         return view('admin.suppliers', compact('suppliers'));
     }
+
+    public function product_status($id)
+    {
+    	$product = Product::find($id);
+
+    	if ($product->status == 0) {
+    		$product->status = 1;
+    	} else {
+    		$product->status = 0;
+    	}
+
+    	$product->save();
+    	return redirect()->back();
+    }
 }

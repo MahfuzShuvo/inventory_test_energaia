@@ -62,6 +62,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->quantity = $request->quantity;
+        $product->status = 0;
 
         $image = $request->file('image');
 

@@ -22,6 +22,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('user.logout');
 
 Route::get('/users', 'AdminController@users')->name('users');
 Route::get('/suppliers', 'AdminController@suppliers')->name('suppliers');
+Route::get('/products/status/{id}', 'AdminController@product_status')->name('products.status');
 
 Route::resource('/products', 'ProductController', ['names' => 'product']);
 
